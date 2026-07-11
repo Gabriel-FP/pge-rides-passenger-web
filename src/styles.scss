@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --pge-bg: #121212;
+  --pge-surface: #1A1A1A;
+  --pge-card: #232323;
+  --pge-border: #2E2E2E;
+  --pge-text: #FFFFFF;
+  --pge-text-muted: #9E9E9E;
+  --pge-text-faint: #4A4A4A;
+  --pge-primary: #17C964;
+  --pge-primary-strong: #12A150;
+  --pge-on-primary: #0B1F14;
+  --pge-primary-tint: rgba(23, 201, 100, 0.12);
+  --pge-danger: #E5484D;
+  --pge-danger-tint: rgba(229, 72, 77, 0.12);
+  --pge-warning: #F5A524;
+  --pge-info: #3B82F6;
+  --pge-map-bg: #1E2530;
+  --pge-map-road: #2A3441;
+  --pge-radius-pill: 999px;
+  --pge-radius-card: 16px;
+  --pge-radius-input: 12px;
+}
+
+body {
+  margin: 0;
+  background: var(--pge-bg);
+  color: var(--pge-text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
