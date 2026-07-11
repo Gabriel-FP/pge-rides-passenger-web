@@ -34,8 +34,8 @@ export const appConfig: ApplicationConfig = {
     providePrimeNG({
       theme: {
         preset: PgePreset,
-        options: { darkModeSelector: '.pge-dark' },   // dark ativado pela classe que pusemos no <html>
+        options: { darkModeSelector: '.pge-dark' },
       },
     }),
   ],
-}
+};
