@@ -1,0 +1,28 @@
+<div class="onboarding">
+  <div class="onboarding__hero">
+    <span class="onboarding__halo onboarding__halo--outer"></span>
+    <span class="onboarding__halo onboarding__halo--inner"></span>
+    <span class="onboarding__icon">
+      <i [class]="currentSlide().icon"></i>
+    </span>
+  </div>
+
+  <div class="onboarding__content">
+    <h1 class="onboarding__title">{{ currentSlide().title }}</h1>
+    <p class="onboarding__text">{{ currentSlide().text }}</p>
+    <div class="onboarding__dots">
+      @for (slide of slides; track slide.title; let i = $index) {
+      <span class="onboarding__dot" [class.onboarding__dot--active]="i === currentIndex()"></span>
+      }
+    </div>
+  </div>
+
+  <div class="onboarding__actions">
+    <button type="button" class="onboarding__button onboarding__button--secondary" (click)="skip()">
+      Skip
+    </button>
+    <button type="button" class="onboarding__button onboarding__button--primary" (click)="next()">
+      Continue
+    </button>
+  </div>
+</div>

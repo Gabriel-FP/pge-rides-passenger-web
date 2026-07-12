@@ -1,0 +1,122 @@
+.onboarding {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.onboarding__hero {
+  flex: 0 0 auto;
+  height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.onboarding__halo {
+  position: absolute;
+  border-radius: 50%;
+
+  &--outer {
+    width: 340px;
+    height: 340px;
+    background: color-mix(in srgb, var(--pge-primary) 6%, transparent);
+  }
+
+  &--inner {
+    width: 252px;
+    height: 252px;
+    background: color-mix(in srgb, var(--pge-primary) 7%, transparent);
+  }
+}
+
+.onboarding__icon {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--pge-card);
+  position: relative;
+
+  i {
+    font-size: 48px;
+    color: var(--pge-primary);
+  }
+}
+
+.onboarding__content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 32px 0;
+}
+
+.onboarding__title {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.onboarding__text {
+  font-size: 14px;
+  color: var(--pge-text-muted);
+  text-align: center;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.onboarding__dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.onboarding__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--pge-radius-pill);
+  background: var(--pge-border);
+  transition: width 0.25s ease-out;
+
+  &--active {
+    width: 20px;
+    background: var(--pge-primary);
+  }
+}
+
+.onboarding__actions {
+  display: flex;
+  gap: 12px;
+  padding: 0 20px;
+  margin-bottom: 30px;
+}
+
+.onboarding__button {
+  flex: 1;
+  height: 52px;
+  border: none;
+  border-radius: var(--pge-radius-pill);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &--secondary {
+    background: var(--pge-card);
+    color: var(--pge-text);
+  }
+
+  &--primary {
+    background: var(--pge-primary);
+    color: var(--pge-on-primary);
+
+    &:hover {
+      background: var(--pge-primary-strong);
+    }
+  }
+}
