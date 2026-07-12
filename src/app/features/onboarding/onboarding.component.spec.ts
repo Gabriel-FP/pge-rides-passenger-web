@@ -33,7 +33,7 @@ describe('OnboardingComponent', () => {
     component.next();
     component.next();
     expect(onboardingService.markAsSeen).toHaveBeenCalled();
-    expect(router.navigateByUrl).toHaveBeenCalledWith('/app', { replaceUrl: true });
+    expect(router.navigateByUrl).toHaveBeenCalledWith('/auth', { replaceUrl: true });
   });
 
   it('should mark as seen and go to the app on skip', () => {
@@ -44,6 +44,6 @@ describe('OnboardingComponent', () => {
     const component = TestBed.createComponent(OnboardingComponent).componentInstance;
     component.skip();
     expect(onboardingService.markAsSeen).toHaveBeenCalled();
-    expect(router.navigateByUrl).toHaveBeenCalledWith('/app', { replaceUrl: true });
+    expect(router.navigateByUrl).toHaveBeenCalledWith('/auth', { replaceUrl: true });
   });
 });

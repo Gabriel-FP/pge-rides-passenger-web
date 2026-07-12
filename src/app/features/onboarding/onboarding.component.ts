@@ -54,6 +54,6 @@ export class OnboardingComponent {
 
   private finish(): void {
     this.onboardingService.markAsSeen();
-    this.router.navigateByUrl('/app', { replaceUrl: true });
+    this.router.navigateByUrl('/auth', { replaceUrl: true });
   }
 }
