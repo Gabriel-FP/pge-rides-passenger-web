@@ -25,6 +25,40 @@ const PgePreset = definePreset(Aura, {
       },
     },
   },
+  components: {
+    button: {
+      root: {
+        borderRadius: '999px',
+        paddingY: '0.9375rem',
+        gap: '0.5rem',
+        label: { fontWeight: '600' },
+      },
+      colorScheme: {
+        dark: {
+          root: {
+            primary: {
+              background: '{primary.500}',
+              hoverBackground: '{primary.600}',
+              activeBackground: '{primary.600}',
+              borderColor: '{primary.500}',
+              hoverBorderColor: '{primary.600}',
+              color: '#0B1F14',
+              hoverColor: '#0B1F14',
+            },
+            secondary: {
+              background: '#232323',
+              hoverBackground: '#2E2E2E',
+              activeBackground: '#2E2E2E',
+              borderColor: '#232323',
+              hoverBorderColor: '#2E2E2E',
+              color: '#FFFFFF',
+              hoverColor: '#FFFFFF',
+            },
+          },
+        },
+      },
+    },
+  },
 });
 
 export const appConfig: ApplicationConfig = {
@@ -38,8 +72,8 @@ export const appConfig: ApplicationConfig = {
         options: { darkModeSelector: '.pge-dark' },
       },
     }), provideServiceWorker('ngsw-worker.js', {
-            enabled: !isDevMode(),
-            registrationStrategy: 'registerWhenStable:30000'
-          }),
+      enabled: !isDevMode(),
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
 };

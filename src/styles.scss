@@ -60,3 +60,11 @@ select {
 a {
   color: inherit;
 }
+
+.w-full {
+  width: 100%;
+
+  .p-button {
+    width: 100%;
+  }
+}
