@@ -17,4 +17,9 @@ export const AUTH_ROUTES: Routes = [
     loadComponent: () =>
       import('./sign-in.component').then((m) => m.SignInComponent),
   },
+  {
+    path: 'otp',
+    loadComponent: () =>
+      import('./otp.component').then((m) => m.OtpComponent),
+  },
 ];
