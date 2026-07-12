@@ -1,0 +1,33 @@
+:host {
+  display: block;
+}
+
+.shell-content {
+  min-height: 100dvh;
+  padding-bottom: 64px;
+}
+
+.bottom-nav {
+  position: fixed;
+  inset: auto 0 0 0;
+  height: 64px;
+  display: flex;
+  background: var(--pge-surface);
+  border-top: 1px solid var(--pge-border);
+}
+
+.bottom-nav__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--pge-text-muted);
+  text-decoration: none;
+
+  &--active {
+    color: var(--pge-primary);
+  }
+}
