@@ -1,0 +1,16 @@
+<div class="phone-input" [class.phone-input--invalid]="control.touched && control.invalid">
+  <span class="phone-input__country">
+    <span class="phone-input__flag">BR</span>
+    <i class="pi pi-chevron-down"></i>
+  </span>
+  <span class="phone-input__divider"></span>
+  <span class="phone-input__ddi">+55</span>
+  <p-inputMask class="phone-input__field" mask="(99) 99999-9999" placeholder="(85) 99123-4567" [unmask]="true"
+    [formControl]="control" />
+</div>
+@if (control.touched && control.hasError('required')) {
+<p class="phone-input__error">Phone number is required.</p>
+}
+@if (control.touched && control.hasError('brPhone')) {
+<p class="phone-input__error">Enter a valid mobile number.</p>
+}
