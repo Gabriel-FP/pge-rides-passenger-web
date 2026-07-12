@@ -1,23 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { ShellComponent } from './shell.component';
 
 describe('ShellComponent', () => {
-  let component: ShellComponent;
-  let fixture: ComponentFixture<ShellComponent>;
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ShellComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(ShellComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+      imports: [ShellComponent],
+      providers: [provideRouter([])],
+    }).compileComponents();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should render one nav link per tab', () => {
+    const fixture = TestBed.createComponent(ShellComponent);
+    fixture.detectChanges();
+    const links = (fixture.nativeElement as HTMLElement).querySelectorAll('a.bottom-nav__item');
+    expect(links.length).toBe(3);
+  });
+
+  it('should render the router outlet', () => {
+    const fixture = TestBed.createComponent(ShellComponent);
+    fixture.detectChanges();
+    expect((fixture.nativeElement as HTMLElement).querySelector('router-outlet')).toBeTruthy();
   });
 });
