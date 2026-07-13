@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { brPhoneValidator } from '../../core/validators/br-phone.validator';
 import { PhoneInputComponent } from '../../shared/components/phone-input/phone-input.component';
+import { AuthStore } from '../../core/stores/auth.store';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,6 +17,7 @@ import { PhoneInputComponent } from '../../shared/components/phone-input/phone-i
 export class SignInComponent {
   private readonly formBuilder = inject(NonNullableFormBuilder);
   private readonly router = inject(Router);
+  private readonly authStore = inject(AuthStore);
 
   readonly form = this.formBuilder.group({
     phone: ['', [Validators.required, brPhoneValidator()]],
@@ -31,6 +33,9 @@ export class SignInComponent {
       this.form.markAllAsTouched();
       return;
     }
-    this.router.navigate(['/auth/otp'], { state: { phone: this.form.getRawValue().phone } });
+    const { phone, rememberMe } = this.form.getRawValue();
+    this.authStore.startVerification(phone, rememberMe).subscribe(() => {
+      this.router.navigate(['/auth/otp']);
+    });
   }
 }

@@ -1,12 +1,19 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
+import { of } from 'rxjs';
 import { SignUpComponent } from './sign-up.component';
+import { AuthStore } from '../../core/stores/auth.store';
 
 describe('SignUpComponent', () => {
+  let authStore: jasmine.SpyObj<AuthStore>;
+
   beforeEach(async () => {
+    authStore = jasmine.createSpyObj<AuthStore>('AuthStore', ['startVerification']);
+    authStore.startVerification.and.returnValue(of(undefined));
+
     await TestBed.configureTestingModule({
       imports: [SignUpComponent],
-      providers: [provideRouter([])],
+      providers: [provideRouter([]), { provide: AuthStore, useValue: authStore }],
     }).compileComponents();
   });
 
@@ -27,21 +34,20 @@ describe('SignUpComponent', () => {
     expect(component.form.valid).toBeTrue();
   });
 
-  it('should not navigate while invalid and should surface the errors', () => {
-    const router = TestBed.inject(Router);
-    spyOn(router, 'navigate');
+  it('should not start verification while invalid and should surface the errors', () => {
     const component = TestBed.createComponent(SignUpComponent).componentInstance;
     component.submit();
-    expect(router.navigate).not.toHaveBeenCalled();
+    expect(authStore.startVerification).not.toHaveBeenCalled();
     expect(component.form.controls.phone.touched).toBeTrue();
   });
 
-  it('should navigate to the otp step with the phone on submit', () => {
+  it('should start verification and go to the otp step on submit', () => {
     const router = TestBed.inject(Router);
     spyOn(router, 'navigate');
     const component = TestBed.createComponent(SignUpComponent).componentInstance;
     component.form.setValue({ phone: '85991234567', acceptedTerms: true });
     component.submit();
-    expect(router.navigate).toHaveBeenCalledWith(['/auth/otp'], { state: { phone: '85991234567' } });
+    expect(authStore.startVerification).toHaveBeenCalledWith('85991234567', true);
+    expect(router.navigate).toHaveBeenCalledWith(['/auth/otp']);
   });
 });
