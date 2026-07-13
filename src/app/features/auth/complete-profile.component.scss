@@ -1,0 +1,81 @@
+.complete-profile__avatar-wrapper {
+  position: relative;
+  width: 96px;
+  margin: 8px auto 8px;
+}
+
+.complete-profile__avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--pge-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  i {
+    font-size: 36px;
+    color: var(--pge-text-muted);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.complete-profile__camera {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--pge-primary);
+  border: 3px solid var(--pge-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  i {
+    font-size: 14px;
+    color: var(--pge-on-primary);
+  }
+}
+
+.complete-profile__file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.complete-profile__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.complete-profile__input {
+  height: 52px;
+  padding: 0 16px;
+  background: var(--pge-card);
+  border: 1px solid var(--pge-card);
+  border-radius: var(--pge-radius-input);
+  color: var(--pge-text);
+  font: inherit;
+
+  &::placeholder {
+    color: var(--pge-text-muted);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--pge-primary);
+  }
+}
