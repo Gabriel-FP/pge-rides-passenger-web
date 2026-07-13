@@ -22,4 +22,9 @@ export const AUTH_ROUTES: Routes = [
     loadComponent: () =>
       import('./otp.component').then((m) => m.OtpComponent),
   },
+  {
+    path: 'complete-profile',
+    loadComponent: () =>
+      import('./complete-profile.component').then((m) => m.CompleteProfileComponent),
+  },
 ];

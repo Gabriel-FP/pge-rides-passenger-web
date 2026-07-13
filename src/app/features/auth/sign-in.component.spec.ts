@@ -1,12 +1,19 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
+import { of } from 'rxjs';
 import { SignInComponent } from './sign-in.component';
+import { AuthStore } from '../../core/stores/auth.store';
 
 describe('SignInComponent', () => {
+  let authStore: jasmine.SpyObj<AuthStore>;
+
   beforeEach(async () => {
+    authStore = jasmine.createSpyObj<AuthStore>('AuthStore', ['startVerification']);
+    authStore.startVerification.and.returnValue(of(undefined));
+
     await TestBed.configureTestingModule({
       imports: [SignInComponent],
-      providers: [provideRouter([])],
+      providers: [provideRouter([]), { provide: AuthStore, useValue: authStore }],
     }).compileComponents();
   });
 
@@ -22,12 +29,13 @@ describe('SignInComponent', () => {
     expect(component.form.valid).toBeTrue();
   });
 
-  it('should navigate to the otp step with the phone on submit', () => {
+  it('should honor the remember me choice when starting verification', () => {
     const router = TestBed.inject(Router);
     spyOn(router, 'navigate');
     const component = TestBed.createComponent(SignInComponent).componentInstance;
-    component.form.setValue({ phone: '85991234567', rememberMe: true });
+    component.form.setValue({ phone: '85991234567', rememberMe: false });
     component.submit();
-    expect(router.navigate).toHaveBeenCalledWith(['/auth/otp'], { state: { phone: '85991234567' } });
+    expect(authStore.startVerification).toHaveBeenCalledWith('85991234567', false);
+    expect(router.navigate).toHaveBeenCalledWith(['/auth/otp']);
   });
 });
