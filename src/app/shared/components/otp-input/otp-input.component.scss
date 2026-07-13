@@ -1,0 +1,26 @@
+:host {
+  display: block;
+
+  ::ng-deep .p-inputotp {
+    gap: 12px;
+    justify-content: center;
+  }
+
+  ::ng-deep .p-inputotp-input {
+    width: 56px;
+    height: 56px;
+    background: var(--pge-card);
+    border: 1px solid var(--pge-card);
+    border-radius: var(--pge-radius-input);
+    color: var(--pge-text);
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+
+    &:focus {
+      border-color: var(--pge-primary);
+      outline: none;
+      caret-color: var(--pge-primary);
+    }
+  }
+}
