@@ -1,0 +1,39 @@
+<div class="auth-page">
+  <h1 class="auth-page__title">Complete your profile</h1>
+  <p class="auth-page__subtitle">Just a couple of details before you start riding.</p>
+
+  <form class="auth-page__form" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="complete-profile__avatar-wrapper">
+      <div class="complete-profile__avatar">
+        @if (avatarPreview()) {
+        <img [src]="avatarPreview()" alt="Profile photo" />
+        } @else {
+        <i class="pi pi-user"></i>
+        }
+      </div>
+      <label class="complete-profile__camera" for="avatar-input">
+        <i class="pi pi-camera"></i>
+      </label>
+      <input id="avatar-input" type="file" accept="image/*" class="complete-profile__file-input"
+        (change)="onAvatarSelected($event)" />
+    </div>
+
+    <div class="complete-profile__field">
+      <input type="text" placeholder="Name" formControlName="name" class="complete-profile__input" />
+      @if (form.controls.name.touched && form.controls.name.hasError('required')) {
+      <p class="otp-page__error">Name is required.</p>
+      }
+    </div>
+
+    <div class="complete-profile__field">
+      <input type="email" placeholder="Email (optional)" formControlName="email" class="complete-profile__input" />
+      @if (form.controls.email.touched && form.controls.email.hasError('email')) {
+      <p class="otp-page__error">Enter a valid email address.</p>
+      }
+    </div>
+
+    <div class="auth-page__cta">
+      <p-button type="submit" label="Finish" styleClass="w-full" />
+    </div>
+  </form>
+</div>

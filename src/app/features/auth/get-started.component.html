@@ -1,0 +1,33 @@
+<div class="get-started">
+  <header class="get-started__brand">
+    <img class="get-started__crest" src="/brasao-ceara.svg" alt="Coat of arms of Ceará" />
+    <span class="get-started__wordmark">PGE-<span class="get-started__wordmark-accent">Rides</span></span>
+    <h1 class="get-started__title">Let's get started!</h1>
+  </header>
+
+  <section class="get-started__social">
+    @for (provider of socialProviders; track provider.label) {
+    <button type="button" class="get-started__social-button"
+      [class.get-started__social-button--soon]="!provider.available" [disabled]="!provider.available">
+      <i [class]="provider.icon"></i>
+      <span>{{ provider.label }}</span>
+      @if (!provider.available) {
+      <span class="get-started__soon-tag">soon</span>
+      }
+    </button>
+    }
+  </section>
+
+  <div class="get-started__divider">
+    <span>or</span>
+  </div>
+
+  <section class="get-started__actions">
+    <p-button label="Create account" styleClass="w-full" routerLink="/auth/sign-up" />
+    <p-button label="Sign in" severity="secondary" styleClass="w-full" routerLink="/auth/sign-in" />
+  </section>
+
+  <footer class="get-started__legal">
+    <a href="#">Terms & Conditions</a> · <a href="#">Privacy Policy</a>
+  </footer>
+</div>

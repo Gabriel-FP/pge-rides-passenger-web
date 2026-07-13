@@ -1,0 +1,25 @@
+<div class="auth-page">
+  <button type="button" class="auth-page__back" routerLink="/auth/get-started" aria-label="Go back">
+    <i class="pi pi-chevron-left"></i>
+  </button>
+
+  <h1 class="auth-page__title">Welcome back!</h1>
+  <p class="auth-page__subtitle">Sign in to continue your rides.</p>
+
+  <form class="auth-page__form" [formGroup]="form" (ngSubmit)="submit()">
+    <app-phone-input [control]="phoneControl" />
+
+    <label class="auth-page__checkbox" for="remember">
+      <p-checkbox formControlName="rememberMe" [binary]="true" inputId="remember" />
+      <span>Remember me</span>
+    </label>
+
+    <p class="auth-page__switch">
+      Don't have an account? <a routerLink="/auth/sign-up">Create account</a>
+    </p>
+
+    <div class="auth-page__cta">
+      <p-button type="submit" label="Sign in" styleClass="w-full" />
+    </div>
+  </form>
+</div>

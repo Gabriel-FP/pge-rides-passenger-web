@@ -1,0 +1,25 @@
+<div class="auth-page">
+  <button type="button" class="auth-page__back" routerLink="/auth/get-started" aria-label="Go back">
+    <i class="pi pi-chevron-left"></i>
+  </button>
+
+  <h1 class="auth-page__title">Create your account</h1>
+  <p class="auth-page__subtitle">We'll send a verification code to your phone.</p>
+
+  <form class="auth-page__form" [formGroup]="form" (ngSubmit)="submit()">
+    <app-phone-input [control]="phoneControl" />
+
+    <label class="auth-page__checkbox" for="terms">
+      <p-checkbox formControlName="acceptedTerms" [binary]="true" inputId="terms" />
+      <span>I accept the <a href="#">Terms &amp; Conditions</a></span>
+    </label>
+
+    <p class="auth-page__switch">
+      Already have an account? <a routerLink="/auth/sign-in">Sign in</a>
+    </p>
+
+    <div class="auth-page__cta">
+      <p-button type="submit" label="Continue" styleClass="w-full" />
+    </div>
+  </form>
+</div>
